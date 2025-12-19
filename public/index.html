@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DevOps Health Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>DevOps Health Dashboard</h1>
+
+  <div class="card">
+    <button onclick="loadStatus()">Check Application Status</button>
+
+    <div class="status">
+      <p><b>App:</b> <span id="app"></span></p>
+      <p><b>Status:</b> <span id="status"></span></p>
+      <p><b>Platform:</b> <span id="platform"></span></p>
+      <p><b>CPU Cores:</b> <span id="cpu"></span></p>
+      <p><b>Total Memory:</b> <span id="totalMem"></span> MB</p>
+      <p><b>Free Memory:</b> <span id="freeMem"></span> MB</p>
+      <p><b>Uptime:</b> <span id="uptime"></span> sec</p>
+    </div>
+  </div>
+
+  <script>
+    function loadStatus() {
+      fetch('/status')
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('app').innerText = data.app;
+          document.getElementById('status').innerText = data.status;
+          document.getElementById('platform').innerText = data.platform;
+          document.getElementById('cpu').innerText = data.cpu_cores;
+          document.getElementById('totalMem').innerText = data.memory.total_MB;
+          document.getElementById('freeMem').innerText = data.memory.free_MB;
+          document.getElementById('uptime').innerText = data.uptime_seconds;
+        });
+    }
+  </script>
+
+</body>
+</html>

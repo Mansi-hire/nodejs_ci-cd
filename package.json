@@ -1,0 +1,13 @@
+{
+  "name": "devops-health-dashboard",
+  "version": "1.0.0",
+  "description": "DevOps Health Dashboard with CI/CD",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "node test/app.test.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
